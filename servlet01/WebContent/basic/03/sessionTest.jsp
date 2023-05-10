@@ -18,5 +18,6 @@
 <!-- 	<hr> -->
 	<a href="<%= request.getContextPath()%>/SessionAddServlet.do">Session 정보 저장하기</a><br><br>
 	<a href="<%= request.getContextPath()%>/SessionReadServlet.do">저장된 Session 정보 확인하기</a><br><br>
+	<a href="<%= request.getContextPath()%>/SessionDeleteServlet.do">저장된 Session 정보 삭제하기</a><br><br>
 </body>
 </html>
