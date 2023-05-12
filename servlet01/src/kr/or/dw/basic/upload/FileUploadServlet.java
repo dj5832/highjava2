@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +27,7 @@ public class FileUploadServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// 파일 업로드에서는  GET 방식을 사용할 수 없다.	
+		// 파일 업로드에서는  GET 방식을 사용할 수 없다.
 	}
 
 	@Override
@@ -57,6 +58,13 @@ public class FileUploadServlet extends HttpServlet{
 			
 			fileList.add(details);
 		}
+		
+		req.setAttribute("uploadFileList", fileList);
+		
+		String view = "/basic/04/fileList.jsp";
+		RequestDispatcher rd = req.getRequestDispatcher(view);
+		rd.forward(req, res);
+		
 	}
 
 	// Part 영역에서 업로드한 파일 이름을 구해서 반환하는 메서드
