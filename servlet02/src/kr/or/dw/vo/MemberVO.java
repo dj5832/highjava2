@@ -7,7 +7,7 @@ package kr.or.dw.vo;
  */
 
 
-public class MemberVo {
+public class MemberVO {
 
 	private String mem_id;
 	private String mem_name;
@@ -37,6 +37,11 @@ public class MemberVo {
 	}
 	public void setMem_addr(String mem_addr) {
 		this.mem_addr = mem_addr;
+	}
+	@Override
+	public String toString() {
+		return "MemberVO [mem_id=" + mem_id + ", mem_name=" + mem_name + ", mem_tel=" + mem_tel + ", mem_addr="
+				+ mem_addr + "]";
 	}
 	
 	

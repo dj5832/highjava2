@@ -2,7 +2,7 @@ package kr.or.dw.member.dao;
 
 import java.util.List;
 
-import kr.or.dw.vo.MemberVo;
+import kr.or.dw.vo.MemberVO;
 
 /**
  * 
@@ -18,7 +18,7 @@ public interface IMemberDao {
 	 * 
 	 * @return 회원정보(MemberVO)가 저장될 List 객체
 	 */
-	public List<MemberVo> getAllMember();
+	public List<MemberVO> getAllMember();
 	
 	
 }
