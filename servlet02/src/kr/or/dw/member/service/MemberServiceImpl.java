@@ -30,4 +30,5 @@ public class MemberServiceImpl implements IMemberService{
 		
 		return dao.getAllMember();
 	}
+	
 }
