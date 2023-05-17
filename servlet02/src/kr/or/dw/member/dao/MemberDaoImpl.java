@@ -36,4 +36,48 @@ public class MemberDaoImpl implements IMemberDao{
 		return memList;
 	}
 
+	@Override
+	public int getMemberCount(String mem_id) {
+		int cnt = 0;
+		
+		try {
+			cnt = (int)smc.queryForObject("mymember.getMemberCount", mem_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int insertMember(MemberVO memVo) {
+		
+		int result = 0;
+		
+		try {
+			Object obj = smc.insert("mymember.insertMember", memVo);	// smc.insert는 insert 할때 쓰는 메서드
+			
+			if(obj == null) {
+				result = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public MemberVO getMember(String mem_id) {
+		
+		MemberVO memVo = null;
+		
+		try {
+			memVo = (MemberVO) smc.queryForObject("mymember.getMember", mem_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return memVo;
+	}
+
 }
