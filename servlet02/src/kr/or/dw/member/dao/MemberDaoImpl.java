@@ -80,4 +80,31 @@ public class MemberDaoImpl implements IMemberDao{
 		return memVo;
 	}
 
+	@Override
+	public int updateMember(MemberVO memVo) {
+		
+		int result = 0;
+		
+		try {
+			result = smc.update("mymember.updateMember", memVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int deleteMember(String mem_id) {
+		
+		int cnt = 0;
+		
+		try {
+			cnt = smc.delete("mymember.deleteMember", mem_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 }

@@ -6,13 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import kr.or.dw.member.service.IMemberService;
 import kr.or.dw.member.service.MemberServiceImpl;
 import kr.or.dw.vo.MemberVO;
 import kr.or.dw.web.IAction;
 
-public class MemberInsertAction implements IAction{
+public class MemberUpdateAction implements IAction{
 
 	@Override
 	public boolean isredirect() {
@@ -29,13 +28,13 @@ public class MemberInsertAction implements IAction{
 		String addr = req.getParameter("addr");
 		
 		MemberVO memVo = new MemberVO();
+		
 		memVo.setMem_id(id);
 		memVo.setMem_name(name);
 		memVo.setMem_tel(tel);
 		memVo.setMem_addr(addr);
 		
-		service.insertMember(memVo);
-		
+		service.updateMember(memVo);
 		
 		return "/member/memberList.do";
 	}
