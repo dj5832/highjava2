@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.dw.web.IAction;
 
-public class JoinAction implements IAction{
+public class UserLoginFormAction implements IAction{
 
 	@Override
 	public boolean isredirect() {
@@ -18,9 +18,9 @@ public class JoinAction implements IAction{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		req.setAttribute("title_nm", "Join");
+		req.setAttribute("title_nm", "Login");
 		
-		return "/user/joinForm.jsp";
+		return "/user/userLoginForm.jsp";
 	}
 
 }
