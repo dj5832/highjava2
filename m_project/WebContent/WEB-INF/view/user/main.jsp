@@ -64,6 +64,5 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    </div>
     <!-- /.content -->
     <%@ include file="footer.jsp" %>
