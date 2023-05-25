@@ -20,6 +20,7 @@
 						  FROM (
 						  		SELECT *
 								  FROM t_board
+								 WHERE gb_del = 'N'
 								 ORDER BY bd_no DESC
 						  		) v1
 						 WHERE rownum <![CDATA[ <= ]]> #end#
@@ -27,7 +28,6 @@
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) b ,t_user u
 		 WHERE b.user_no = u.user_no
-		   AND b.gb_del = 'N'
 	</select>
 	
 	<select id="selectBoardCount" resultClass="int">
@@ -66,5 +66,34 @@
 					)
 			
 	</insert>
+	<select id="selectBoardView" parameterClass="int" resultClass="boardVO">
+		SELECT bd_no
+			  ,bd_title
+			  ,bd_content
+			  ,bd_wdt
+			  ,bd_hit
+			  ,bd_like
+			  ,b.user_no
+			  ,b.nick
+			  ,pic_path
+		  FROM t_board b
+		  	  ,t_user u
+		 WHERE b.user_no = u.user_no
+		   AND b.gb_del = 'N'
+		   AND bd_no = #bd_no#
+	</select>
+	
+	<update id="updateContent" parameterClass="boardVO">
+		UPDATE t_board
+		   SET bd_title = #bd_title#
+		      ,bd_content = #bd_content#
+		 WHERE bd_no = #bd_no#
+	</update>
+	
+	<update id="deleteContent" parameterClass="int">
+		UPDATE t_board
+		   SET gb_del = 'Y'
+		 WHERE bd_no = #bd_no#
+	</update>
 
 </sqlMap>

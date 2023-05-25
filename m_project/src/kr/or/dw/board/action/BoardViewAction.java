@@ -11,7 +11,7 @@ import kr.or.dw.board.service.IBoardService;
 import kr.or.dw.board.vo.BoardVO;
 import kr.or.dw.web.IAction;
 
-public class BoardInsertAction implements IAction{
+public class BoardViewAction implements IAction{
 
 	@Override
 	public boolean isredirect() {
@@ -20,16 +20,15 @@ public class BoardInsertAction implements IAction{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		int bd_no = 0;
+		bd_no = Integer.parseInt(req.getParameter("bd_no"));
+		IBoardService boardService = BoardServiceImpl.getInstance();
+		BoardVO boardVo = null;
+		boardVo = boardService.selectBoardView(bd_no);
+		req.setAttribute("boardVo", boardVo);
+		req.setAttribute("title_nm", "View");
 		
-		if(req.getParameter("bd_no") != null) {
-			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
-			IBoardService service = BoardServiceImpl.getInstance();
-			BoardVO boardVo = service.selectBoardView(bd_no);
-			req.setAttribute("boardVo", boardVo);
-		}
-		req.setAttribute("title_nm", "content");
-		
-		return "/board/boardInsert.jsp";
+		return "/board/boardView.jsp";
 	}
 
 }

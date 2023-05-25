@@ -36,5 +36,21 @@ public class BoardServiceImpl implements IBoardService{
 	public int insertContent(BoardVO boardVo) {
 		return dao.insertContent(boardVo);
 	}
+
+	@Override
+	public BoardVO selectBoardView(int bd_no) {
+		return dao.selectBoardView(bd_no);
+	}
+
+	@Override
+	public int updateContent(BoardVO boardVo) {
+		return dao.updateContent(boardVo);
+	}
+
+	@Override
+	public void deleteContent(int bd_no) {
+		dao.deleteContent(bd_no);
+		
+	}
 	
 }

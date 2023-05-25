@@ -64,4 +64,45 @@ public class BoardDaoImpl implements IBoardDao{
 		
 		return bd_no;
 	}
+
+	@Override
+	public BoardVO selectBoardView(int bd_no) {
+		BoardVO boardVo = null;
+		
+		try {
+			boardVo = (BoardVO) client.queryForObject("board.selectBoardView", bd_no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return boardVo;
+	}
+
+	@Override
+	public int updateContent(BoardVO boardVo) {
+		int result = 0;
+		
+		try {
+			result = client.update("board.updateContent", boardVo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public void deleteContent(int bd_no) {
+		
+		try {
+			client.update("board.deleteContent", bd_no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }

@@ -13,4 +13,10 @@ public interface IBoardDao {
 
 	int insertContent(BoardVO boardVo);
 
+	BoardVO selectBoardView(int bd_no);
+
+	int updateContent(BoardVO boardVo);
+
+	void deleteContent(int bd_no);
+
 }
